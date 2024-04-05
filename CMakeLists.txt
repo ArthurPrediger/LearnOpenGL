@@ -62,13 +62,13 @@ else()
 endif(WIN32)
 
 set(CHAPTERS
-    1.getting_started
-    2.lighting
-    3.model_loading
-    4.advanced_opengl
-    5.advanced_lighting
+    #1.getting_started
+    #2.lighting
+    #3.model_loading
+    #4.advanced_opengl
+    #5.advanced_lighting
     6.pbr
-    7.in_practice
+    #7.in_practice
 )
 
 set(1.getting_started
@@ -159,12 +159,13 @@ set(5.advanced_lighting
 )
 
 set(6.pbr
-    1.1.lighting
+    0.0.atv2_cg_avancada
+    #1.1.lighting
     1.2.lighting_textured
-    2.1.1.ibl_irradiance_conversion
-    2.1.2.ibl_irradiance
-    2.2.1.ibl_specular
-    2.2.2.ibl_specular_textured
+    #2.1.1.ibl_irradiance_conversion
+    #2.1.2.ibl_irradiance
+    #2.2.1.ibl_specular
+    #2.2.2.ibl_specular_textured
 )
 
 set(7.in_practice
@@ -174,18 +175,18 @@ set(7.in_practice
 )
 
 set(GUEST_ARTICLES
-	8.guest/2020/oit
-	8.guest/2020/skeletal_animation
-	8.guest/2021/1.scene/1.scene_graph
-	8.guest/2021/1.scene/2.frustum_culling
-	8.guest/2021/2.csm
-	8.guest/2021/3.tessellation/terrain_gpu_dist
-	8.guest/2021/3.tessellation/terrain_cpu_src
-	8.guest/2021/4.dsa
-	8.guest/2022/5.computeshader_helloworld
-	8.guest/2022/6.physically_based_bloom
-	8.guest/2022/7.area_lights/1.area_light
-	8.guest/2022/7.area_lights/2.multiple_area_lights
+	#8.guest/2020/oit
+	#8.guest/2020/skeletal_animation
+	#8.guest/2021/1.scene/1.scene_graph
+	#8.guest/2021/1.scene/2.frustum_culling
+	#8.guest/2021/2.csm
+	#8.guest/2021/3.tessellation/terrain_gpu_dist
+	#8.guest/2021/3.tessellation/terrain_cpu_src
+	#8.guest/2021/4.dsa
+	#8.guest/2022/5.computeshader_helloworld
+	#8.guest/2022/6.physically_based_bloom
+	#8.guest/2022/7.area_lights/1.area_light
+	#8.guest/2022/7.area_lights/2.multiple_area_lights
 )
 
 configure_file(configuration/root_directory.h.in configuration/root_directory.h)
