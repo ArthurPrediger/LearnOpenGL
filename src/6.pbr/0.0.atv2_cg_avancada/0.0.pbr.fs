@@ -46,7 +46,7 @@ float DistributionBlinn(vec3 N, vec3 H, float roughness)
     float a2 = a*a;
     float NdotH = max(dot(N, H), 0.0);
 
-    float nom = pow(NdotH, ((2.0/a2) - 2.0));
+    float nom = pow(NdotH, ((2.0/a2) - 2.0) + 0.0001);
     float denom = PI * a2;
 
     return nom / denom;
@@ -71,7 +71,7 @@ float GeometryNeumann(vec3 N, vec3 V, vec3 L, float roughness)
     return (NdotL * NdotV) / max(NdotL, NdotV);
 }
 // ----------------------------------------------------------------------------
-vec3 fresnelSchlick(float cosTheta, vec3 F0)
+vec3 fresnelNone(float cosTheta, vec3 F0)
 {
     return F0;
 }
@@ -88,7 +88,7 @@ void main()
 
     // calculate reflectance at normal incidence; if dia-electric (like plastic) use F0 
     // of 0.04 and if it's a metal, use the albedo color as F0 (metallic workflow)    
-    vec3 F0 = vec3(0.04); 
+    vec3 F0 = vec3(0.04);
     F0 = mix(F0, albedo, metallic);
 
     // reflectance equation
@@ -105,7 +105,7 @@ void main()
         // Cook-Torrance BRDF
         float NDF = DistributionBlinn(N, H, roughness);   
         float G   = GeometryNeumann(N, V, L, roughness);      
-        vec3 F    = fresnelSchlick(max(dot(H, V), 0.0), F0);
+        vec3 F    = fresnelNone(max(dot(H, V), 0.0), F0);
            
         vec3 numerator    = NDF * G * F; 
         float denominator = 4.0 * max(dot(N, V), 0.0) * max(dot(N, L), 0.0) + 0.0001; // + 0.0001 to prevent divide by zero
@@ -141,4 +141,6 @@ void main()
     color = pow(color, vec3(1.0/2.2)); 
 
     FragColor = vec4(color, 1.0);
+
+    //if(roughness >= 1.0) FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
